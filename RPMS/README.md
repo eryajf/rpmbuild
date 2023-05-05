@@ -15,7 +15,7 @@ $ for i in openresty-openssl111  openresty-pcre-8.45  openresty-zlib-1.2.13;do r
 
 ```sh
 $ cd openresty
-$ wget https://github.com/eryajf/rpmbuild/blob/main/RPMS/x86_64/openresty-1.19.9.1-1.eryajf.el7.x86_64.rpm
+$ wget https://github.com/eryajf/rpmbuild/raw/main/RPMS/x86_64/openresty-1.19.9.1-1.eryajf.el7.x86_64.rpm
 ```
 
 执行安装命令：
