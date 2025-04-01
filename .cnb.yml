@@ -11,6 +11,7 @@ main:
           image: tencentcom/git-sync
           imports: https://cnb.cool/eryajf/build-env/-/blob/main/env.yaml
           settings:
+            force: true
             branch: main
             auth_type: https
             username: ${GIT_USERNAME}
