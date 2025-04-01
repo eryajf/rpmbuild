@@ -10,7 +10,7 @@
 
 <p> 整理工作中常用的 RPM 构建 SPEC </p>
 
-<img src="https://cnb.cool/66666/resource/-/git/raw/main/img/hengtiao.gif" width="100%" height="2">
+<img src="https://cnb.cool/66666/resource/-/git/raw/main/img/hengtiao.gif" width="100%" height="3">
 </div><br>
 
 </div>
