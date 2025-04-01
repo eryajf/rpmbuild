@@ -5,11 +5,12 @@
 [![HitCount](https://views.whatilearened.today/views/github/eryajf/rpmbuild.svg)](https://github.com/eryajf/rpmbuild)
 [![GitHub license](https://img.shields.io/github/license/eryajf/rpmbuild)](https://github.com/eryajf/rpmbuild/blob/main/LICENSE)
 [![](https://img.shields.io/badge/%E5%8D%9A%E5%AE%A2-%E4%BA%8C%E4%B8%AB%E8%AE%B2%E6%A2%B5-d7b1bf?logo=Blogger)](https://wiki.eryajf.net)
+[![](https://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-%E8%BF%90%E7%BB%B4%E8%89%BA%E6%9C%AF-71f9fe?logo=WeChat)](https://y.gtimg.cn/music/photo_new/T053M000003iCCnF30PTi3.jpg)
 [![](https://img.shields.io/badge/Awesome-MyStarList-c780fa?logo=Awesome-Lists)](https://github.com/eryajf/awesome-stars-eryajf#readme)
 
 <p> 整理工作中常用的 RPM 构建 SPEC </p>
 
-<img src="https://cnb.cool/66666/resource/-/git/raw/main/img/hengtiao.gif" width="100%" height="1">
+<img src="https://cnb.cool/66666/resource/-/git/raw/main/img/hengtiao.gif" width="100%" height="2">
 </div><br>
 
 </div>
