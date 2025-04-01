@@ -1,0 +1,20 @@
+# -*- mode: conf -*-
+
+[Unit]
+
+Description=Prometheus exporter for Redis server metrics.
+Documentation=https://github.com/oliver006/redis_exporter
+After=network.target
+
+
+[Service]
+REDIS_EXPORTER_OPTS=
+EnvironmentFile=-/etc/default/redis_exporter
+User=prometheus
+ExecStart=/usr/bin/redis_exporter -redis.file /etc/redis_exporter.conf
+Restart=on-failure
+
+
+[Install]
+
+WantedBy=multi-user.target

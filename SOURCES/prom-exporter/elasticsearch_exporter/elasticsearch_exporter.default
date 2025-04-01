@@ -1,0 +1,1 @@
+EXPORTER_ARGS="--es.uri=http://localhost:9200"

@@ -1,0 +1,20 @@
+# -*- mode: conf -*-
+
+[Unit]
+
+Description=Export php-fpm metrics in Prometheus format.
+Documentation=https://github.com/bakins/php-fpm-exporter
+After=network.target
+
+
+[Service]
+
+EnvironmentFile=-/etc/default/phpfpm_exporter
+User=prometheus
+ExecStart=/usr/bin/phpfpm_exporter $PHPFPM_EXPORTER_OPTS
+Restart=on-failure
+
+
+[Install]
+
+WantedBy=multi-user.target

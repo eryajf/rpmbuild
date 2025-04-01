@@ -1,0 +1,82 @@
+worker_processes  auto;
+user  www www;
+worker_rlimit_nofile 100000;
+error_log /data/log/error.log;
+pid        /var/run/nginx.pid;
+events {
+    worker_connections  80960;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    server_names_hash_max_size   10240;
+    server_names_hash_bucket_size  2048;
+    client_max_body_size  3m;
+    client_body_buffer_size 256k;
+    # limit_zone one  $binary_remote_addr 50m;
+
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for" "$http_x_tencent_ua" "$host"  "##$request_time##" "##$upstream_response_time##"';
+
+    log_format json escape=json '{"remote_addr": "$remote_addr",'
+                                 '"@timestamp": "$time_iso8601",'
+                                 '"request_uri": "$request_uri",'
+                                 '"verb": "$request_method",'
+                                 '"httpversion": "$server_protocol",'
+                                 '"response": "$status", '
+                                 '"body_bytes_sent": "$body_bytes_sent", '
+                                 '"referrer": "$http_referer", '
+                                 '"user_agent": "$http_user_agent", '
+                                 '"http_x_forwarded_for": "$http_x_forwarded_for", '
+                                 '"server_name": "$host",'
+                                 '"request_time": "$request_time",'
+                                 '"upstream_response_time": "$upstream_response_time",'
+                                 '"upstream_addr": "$upstream_addr",'
+                                 '"realpath_root": "$realpath_root",'
+                                 '"cookie": "$http_cookie",'
+                                 '"request_body": "$request_body",'
+                                 '"nginx_version": "$nginx_version",'
+                                 '"scheme": "$scheme"}';
+
+    access_log /data/log/tmp.log json;
+
+    sendfile        on;
+    underscores_in_headers on;
+    gzip        on;
+    gzip_comp_level     4;
+    # must to add http_gzip_static_module
+    gzip_static on;
+    gzip_min_length  1000;
+    gzip_buffers 4 16k;
+    gzip_proxied  any;
+    gzip_types text/plain application/xml  application/x-javascript text/css application/json image/jpeg image/gif image/png;
+    #gzip_types text/plain application/xml  application/x-javascript text/css application/json;
+    # ie 1-5  brower
+    gzip_disable     "MSIE [1-5]\.";
+
+    server_tokens off;
+    keepalive_timeout  300;
+    send_timeout 300;
+
+    proxy_ignore_client_abort on;
+
+    fastcgi_buffer_size 16k;
+    fastcgi_buffers 16 16k;
+    fastcgi_read_timeout 300;
+    fastcgi_send_timeout 300;
+    fastcgi_connect_timeout 300;
+    fastcgi_busy_buffers_size 16k;
+    fastcgi_temp_file_write_size 16k;
+
+    server{
+        listen      80;
+        server_name _;
+        location / {
+           return 404;
+        }
+    }
+
+    include vhost/*.conf;
+}
